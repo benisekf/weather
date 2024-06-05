@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+<h2>Check the Weather</h2>
+<form method="POST" action="/">
+    <input type="text" name="city" placeholder="Enter city name">
+    <button type="submit">Get Weather</button>
+</form>
+{% if weather %}
+    <h3>Weather in {{ weather['city'] }}</h3>
+    <p>Temperature: {{ weather['temperature'] }}°C</p>
+{% elif error %}
+    <p>{{ error }}</p>
+{% else %}
+    <p>No data received. Please enter a city.</p>
+{% endif %}
+{% endblock %}
